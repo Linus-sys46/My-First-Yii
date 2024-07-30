@@ -23,7 +23,7 @@ $this->registerLinkTag(['rel' => 'icon', 'type' => 'image/x-icon', 'href' => Yii
 <!DOCTYPE html>
 <html lang="<?= Yii::$app->language ?>" class="h-100">
 <head>
-    <title><?= Html::encode($this->title) ?></title>
+    <title><?= Html::encode($this->title) ?> - Service Provider Connector</title>
     <?php $this->head() ?>
 </head>
 <body class="d-flex flex-column h-100">
@@ -32,19 +32,19 @@ $this->registerLinkTag(['rel' => 'icon', 'type' => 'image/x-icon', 'href' => Yii
 <header id="header">
     <?php
     NavBar::begin([
-        'brandLabel' => Yii::$app->name,
+        'brandLabel' => 'Service Provider Connector',
         'brandUrl' => Yii::$app->homeUrl,
-        'options' => ['class' => 'navbar-expand-md navbar-dark bg-dark fixed-top']
+        'options' => ['class' => 'navbar-expand-md navbar-light bg-light fixed-top']
     ]);
     echo Nav::widget([
         'options' => ['class' => 'navbar-nav'],
         'items' => [
             ['label' => 'Home', 'url' => ['/site/index']],
-            ['label' => 'About', 'url' => ['/site/about']],
-            ['label' => 'Contact', 'url' => ['/site/contact']],
-            ['label'=> 'Services', 'url'=>['site/services']],
+            ['label' => 'Find Services', 'url' => ['/site/services']],
+            ['label' => 'Bookings', 'url' => ['/site/bookings']],
+            ['label' => 'Messages', 'url' => ['/site/messages']],
             Yii::$app->user->isGuest
-                ? ['label' => 'Login', 'url' => ['/site/login']]
+                ? ['label' => 'Login/Register', 'url' => ['/site/login']]
                 : '<li class="nav-item">'
                     . Html::beginForm(['/site/logout'])
                     . Html::submitButton(
@@ -69,16 +69,31 @@ $this->registerLinkTag(['rel' => 'icon', 'type' => 'image/x-icon', 'href' => Yii
     </div>
 </main>
 
-<footer id="footer" class="mt-auto py-3 bg-light">
+<!-- <footer id="footer" class="mt-auto py-3 bg-light">
     <div class="container">
         <div class="row text-muted">
-            <div class="col-md-6 text-center text-md-start">&copy; My Company <?= date('Y') ?></div>
-            <div class="col-md-6 text-center text-md-end"><?= Yii::powered() ?></div>
+            <div class="col-md-4 text-center text-md-start">&copy; Service Provider Connector <?= date('Y') ?></div>
+            <div class="col-md-4 text-center">
+                <?= Html::a('Terms of Service', ['/site/terms']) ?> |
+                <?= Html::a('Privacy Policy', ['/site/privacy']) ?>
+            </div>
+            <div class="col-md-4 text-center text-md-end">
+                <?= Html::dropDownList('language', Yii::$app->language, [
+                    'en' => 'English',
+                    'es' => 'Español',
+                    'fr' => 'Français',
+                ], ['id' => 'language-selector', 'class' => 'form-select form-select-sm']) ?>
+            </div>
         </div>
     </div>
-</footer>
+</footer> -->
 
 <?php $this->endBody() ?>
+<script>
+// document.getElementById('language-selector').addEventListener('change', function() {
+//     window.location.href = '<?= Yii::$app->urlManager->createUrl(['site/change-language']) ?>&language=' + this.value;
+// });
+</script>
 </body>
 </html>
 <?php $this->endPage() ?>

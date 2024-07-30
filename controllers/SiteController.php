@@ -128,4 +128,24 @@ class SiteController extends Controller
     public function actionServices(){
         return $this->render('services');
     }
+    public function actionBookings(){
+        return $this->render('bookings');
+    }
+    public function actionMessages(){
+        return $this->render('messages');
+    }
+    // match, create,reviews
+    public function actionMatch(){
+        return $this->render('match');
+    }
+    public function actionCreate(){
+        return $this->render('create');
+    }
+    public function actionReviews(){
+        return $this->render('reviews');
+    }
+    public function actionStart(){
+        return $this->render('start');
+    }
 }
+
